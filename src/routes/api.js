@@ -8,7 +8,7 @@
 const express = require('express');
 const userController = require('../controllers/user');
 
-const router = express.Router()
+const router = express.Router();
 
 /* ENRUTADOR Y ENDPOINTS */
 //login
@@ -19,4 +19,6 @@ router.route('/users').all( (req, res, next) => {
     .get(userController.getAllUsers)
     .post(userController.createUser);
 
-exports = router;
+router.get('/users/:username', userController.getUserData);
+
+module.exports = router;

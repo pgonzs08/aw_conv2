@@ -26,18 +26,19 @@ exports.getUserProfilePage = async (req, res) => {
 };
 
 exports.getUserData = async (req, res) =>{
-    const uname = req.params.id;
-    var item;
-    await models.User.findOne({username: uname}, {username}).exec().then((u) =>item.user=u);
-    await models.Subscriber.findOne({user: {username: uname}}, {user}).exec().then((s) =>item.subscriptor=s);
-    await models.Publisher.findOne({user: {username: uname}}, {user}).exec().then((p) =>item.publisher=p);
+    const uname = req.params.username;
+    var item = {};
+    await models.User.findOne({username: uname}, {username: 1}).exec().then((u) =>item.user=u);
+    await models.Subscriber.findOne({user: {username: uname}}, {user: 1}).exec().then((s) =>item.subscriptor=s);
+    await models.Publisher.findOne({user: {username: uname}}, {user: 1}).exec().then((p) =>item.publisher=p);
 
     res.send(item);
 }
 
 exports.getAllUsers = async (req, res) =>{
     var users;
-    await models.User.find({}, );
+    await models.User.find({}, {username:1}).exec().then((us) => users=us);
+    res.send(users);
 }
 
 //Login y register
@@ -91,7 +92,7 @@ exports.createUser = async (req, res) =>{
             await newPublisher.save();
         }
             
-        res.redirect('/users/login');
+        res.redirect('../users/login');
     } catch (error) {
         console.error(error);
         res.redirect('/users/register');
