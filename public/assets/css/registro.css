@@ -1,0 +1,37 @@
+body {
+    position: absolute;
+    background-image: url("../img/eventCity.jpg");
+    height: 100vh;
+}
+
+.section {
+    width: 30vw;
+    margin-top: 15vh;
+    margin-left: 35vw;
+}
+
+.article {
+    background: #111B1F;
+}
+
+.botones {
+    display: flex;
+}
+
+.botonLogin {
+    width: 25vw;
+    border: solid;
+    padding-left: 3.5vw;
+    padding-top: 1.8vh;
+    height: 4vw;
+    border-radius: 5px;
+    background: #008080;
+}
+
+.botonLogin:hover {
+    background: #00a5a5;
+}
+
+.Submit {
+    margin-left: 3%;
+}

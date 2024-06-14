@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./head.ejs', {username: session.username}) %>
+    </head>
+    <body>
+        <%- include('./nav.ejs', {username: session.username}) %>
+        <% if (usuario) {%>
+        <h1><%=usuario.username%></h1>
+        <h2><%=usuario.name%> <%=usuario.surname%></h2>
+        <% if (isSubscriptor) { %>
+            <p><%subscriptor.user%> es un usuario subscriptor</p>
+            <ul>
+                <% subscriptor.events.forEach((evento) => {%><li><a href="/events/<%-evento.id%>""><%=evento.name%></a></li><%})%>
+            </ul>
+        <% } %>
+        <% if (isPublicador) { %>
+            <p><%=publicador.user.username%> es un usuario publicador</p>
+            <ul>
+                <% publicador.events.forEach((evento) => {%><li><a href="/events/<%-evento.id%>""><%=evento.name%></a></li><%})%>
+            </ul>
+        <% } %>
+        <% } %>
+    </body>
+</html>

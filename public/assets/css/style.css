@@ -1,0 +1,286 @@
+:root {
+  --color-principal: #469ccd;
+  /* Color primario para el tema */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  /* Estilos básicos y fuente para todo el documento */
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2e1dc;
+  /* Centrar el contenido y aplicar un color de fondo */
+}
+
+.form-container{
+  position:relative;
+  background-color: #f5f5f5;
+  width: 90%;
+  height: 90%;
+  display: flex;
+}
+
+.container {
+  position: relative;
+  width: 1200px;
+  min-height: 850px;
+  margin: 0 auto;
+  padding: 5px;
+  color: #fff;
+  display: flex;
+  border-radius: 10px;
+  background-color: #54adae;
+  /* Estilos para el contenedor principal */
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 63%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  background-color: #4b8f91;
+  /* Línea decorativa en el contenedor */
+}
+
+.left {
+  width: 60%;
+  padding: 20px;
+  /* Contenedor de la izquierda */
+}
+
+.calendario {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #878895;
+  border-radius: 5px;
+  background-color: #fff;
+  /* Estilos para el calendario */
+}
+
+.calendario::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 12px;
+  height: 97%;
+  border-radius: 0 5px 5px 0;
+  background-color: #d3d5d6d7;
+  transform: translateY(-50%);
+  /* Línea decorativa en el calendario */
+}
+
+.calendario .mes {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  /* Estilos para el contenedor del mes */
+}
+
+.calendario .mes .prev,
+.calendario .mes .next {
+  cursor: pointer;
+  /* Estilos para las flechas de navegación */
+}
+
+.calendario .mes .prev,
+.calendario .mes .next {
+  cursor: var(--color-principal);
+  /* Color para las flechas */
+}
+
+.calendario .diasSemana {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  /* Estilos para los días de la semana */
+}
+
+.calendario .diasSemana div {
+  width: 14.3%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Estilos para cada día de la semana */
+}
+
+.calendario .dias {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  /* Estilos para los días del mes */
+}
+
+.calendario .dias .dia {
+  width: 14.25%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-principal);
+  border: 1px solid #f5f5f5;
+  /* Estilos para cada día */
+}
+
+.calendario .dia:not(.prev, .next):hover {
+  color: #fff;
+  background-color: var(--color-principal);
+  /* Estilos para los días al pasar el ratón */
+}
+
+.calendario .dias .prev,
+.calendario .dias .next {
+  color: #b3b3b3;
+  /* Estilos para los días del mes anterior y siguiente */
+}
+
+.calendario .dias .active {
+  position: relative;
+  font-size: 2rem;
+  color: #fff;
+  background-color: var(--color-principal);
+  /* Estilos para el día actual */
+}
+
+.calendario .dias .active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 10px 2px var(--color-principal);
+  /* Sombra para el día actual */
+}
+.calendario .dias .hoy {
+  font-size: 2rem;
+}
+.calendario .dias .event {
+  position: relative;
+}
+.calendario .dias .event::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: 75%;
+  height: 6px;
+  border-radius: 30px;
+  transform: translateX(-50%);
+  background-color: var(--color-principal);
+}
+.calendario .event:hover::after {
+  background-color: #fff;
+}
+.calendario .active.event::after {
+  background-color: #fff;
+  bottom: 20%;
+}
+.calendario .active.event {
+  padding-bottom: 10px;
+}
+.calendario .goto-hoy {
+  width: 50%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  color: var(--color-principal);
+}
+.calendario .goto-hoy .goto {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+}
+.calendario.goto-hoy.goto input {
+  width: 100%;
+  height: 30%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 20px;
+  color: var(--color-principal);
+  border-radius: 5px;
+}
+.calendario .goto-hoy button {
+  width: 40%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+nav {
+  width: 100%;
+  background-color: #469ccd;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul.right {
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}

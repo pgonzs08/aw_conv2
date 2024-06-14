@@ -1,0 +1,46 @@
+string de conexion a la bd:
+"mongodb+srv://eventCity:XkzsIkgjMa1ytZrG@eventcity.hikfngv.mongodb.net/?retryWrites=true&w=majority&appName=EventCity"
+
+{
+    "users":[{
+        "idUser":"required", int,
+        "username":"required", string,
+        "password":"required", string,
+        "type":"required", string/boolean
+    }]
+},
+
+{
+    "publishers":[{
+        "idPublisher":"required", int,
+        "idUser":"required", int
+    }]
+},
+
+{
+    "subscriptors":[{
+        "idSubscriptor":"required", int,
+        "idUser":"required", int,
+        "idSubscription":"required", int
+    }]
+},
+
+{
+    "events":[{
+        "idEvent":"required", int,
+        "name":"required", string,
+        "description":"not required", string,
+        "day":"required", date, 
+        "price":"not required", int,
+        "idPublisher":"required", int,
+        "location":"required", string
+    }]
+},
+
+{
+    "subscriptions":[{
+        "idSubscription":"required", int,
+        "idEvent":"required", int,
+        "state":"required", boolean
+    }]
+}

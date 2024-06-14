@@ -1,0 +1,16 @@
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/events/create">Crear Evento</a></li>
+        <li><a href="/events/">Ver Eventos</a></li>
+    </ul>
+    <ul class="right">
+        <% if (username != null) {%>
+        <li><a href="/users/<%=username%>">Perfil</a></li>
+        <% } %>
+        <% if (username == null) { %>
+        <li><a href="/users/login">Login</a></li>
+        <li><a href="/users/register">Registrarse</a></li>
+        <% } %>
+    </ul>
+</nav>

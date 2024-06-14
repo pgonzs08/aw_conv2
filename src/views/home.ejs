@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('./head.ejs', {username: session.username}) %>
+    <style>
+      .mes {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .arrow {
+        cursor: pointer;
+        padding: 0 10px;
+        font-size: 1.5em;
+      }
+    </style>
+    <!-- Estilos en línea para las flechas y la disposición del mes -->
+  </head>
+  <body>
+    <%- include('./nav.ejs', {username: session.username}) %>
+    <div class="container">
+      <!-- Contenedor principal -->
+      <div class="left">
+        <!-- Contenedor de la izquierda -->
+        <div class="calendario">
+          <!-- Contenedor del calendario -->
+          <div class="mes">
+            <!-- Contenedor para el mes y las flechas -->
+            <div class="arrow prev">&larr;</div>
+            <!-- Flecha a la izquierda -->
+            <div class="date"></div>
+            <!-- Texto del mes y año -->
+            <div class="arrow next">&rarr;</div>
+            <!-- Flecha a la derecha -->
+          </div>
+          <div class="diasSemana">
+            <!-- Contenedor para los días de la semana -->
+            <div>Lunes</div>
+            <div>Martes</div>
+            <div>Miércoles</div>
+            <div>Jueves</div>
+            <div>Viernes</div>
+            <div>Sábado</div>
+            <div>Domingo</div>
+          </div>
+          <div class="dias">
+            <!--los añado con js-->
+          </div>
+          <div class="goto-hoy">
+            <div class="goto">
+              <input type="text" placeholder="mm/yyyy" class="date-input" />
+              <button class="goto-btn">ir</button>
+            </div>
+            <button class="hoy-btn">hoy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/home.js"></script>
+    <!-- Enlace al archivo JavaScript -->
+  </body>
+</html>

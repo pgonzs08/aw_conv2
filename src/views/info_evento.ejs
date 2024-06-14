@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./head.ejs', {username: session.username}) %>
+    </head>
+    <body>
+        <%- include('./nav.ejs', {username: session.username}) %>
+        <article>
+            <header>
+                <h1 id="event-name"><%=event.name%></h1>
+            </header>
+
+            <section>
+                <p id="event-description"><%=event.description%></p>
+                <p><strong>Precio: </strong> <span id="event-price"><%=event.price%></span></p>
+                <p><strong>Fecha: </strong> <span id="event-date"><%=event.date%></span></p>
+                <p><strong>Lugar: </strong> <span id="event-location"><%=event.location%></span></p>
+                <p><strong>Organiza: </strong> <span id="event-creator"><<%=event.publisher.username%>/span></p>
+            </section>
+
+            <section>
+                <form method="POST" action="/events/event/<%-event.id%>"><input name="name" value="<%-event.name%>" style="display:none"><input type="date" name="day" value="<%-event.day%>" style="display:none;"><input type="submit" value="Suscribirse"></form>
+            </section>
+        </article>
+
+        <script src="js/event.js"></script>
+    </body>
+</html>

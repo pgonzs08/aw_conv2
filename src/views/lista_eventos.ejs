@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%-include("./head.ejs")%>
+    </head>
+    <body>
+        <%-include("./nav.ejs", {username: session.username})%>
+        <h1>Todos los eventos</h1>
+        <ul>    
+        <% events.forEach((evento) => {%><li><a href="/events/event/<%-evento.id%>""><%=evento.name%></a><form method="POST" action="/events/event/<%-evento.id%>"><input name="name" value="<%-evento.name%>" style="display:none;"><input type="date" name="day" value="<%-evento.day%>" style="display:none;"><input type="submit" value="Suscribirse"></form></li><%})%>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.1"
+  },
+  "name": "aw-final-1c-g08",
+  "version": "1.0.0",
+  "description": "Aplicación Web para el proyecto final de la asignatura Aplicaciones Web",
+  "main": "src/app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node ./src/app.js",
+    "test": "node ./ej_mongoose.js && exit 1",
+    "dev": "node --watch src/app.js",
+    "fill_db": "node create_db.js && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULE-Informatica-2023-2024/aw-final-1c-g08.git"
+  },
+  "keywords": [
+    "calendario",
+    "aplicaciones_web",
+    "amorch"
+  ],
+  "author": "Grupo 1C-G08",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULE-Informatica-2023-2024/aw-final-1c-g08/issues"
+  },
+  "homepage": "https://github.com/ULE-Informatica-2023-2024/aw-final-1c-g08#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- Configuración básica de codificación -->
+        <meta http-equiv="X_UA_Compatible" content="IE=edge" />
+        <!-- Asegura la compatibilidad con Internet Explorer -->
+        <meta name="index" content="width=device-width, initial-scale=1.0" />
+        <!-- Configuración de la vista para dispositivos móviles -->
+        <link rel="stylesheet" href="/public/assets/css/style.css" />
+        <!-- Enlace al archivo CSS personalizado -->
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.2/css/pico.min.css" />
+        <!-- Enlace a la hoja de estilos de Pico CSS -->
+        <title>Calendario</title>
+        <!-- Título de la página -->
+    </head>
+    <body>
+        <section name="container" class="section">
+            <article name="cuerpo" class="article">
+              <form name="register" method="POST" action="/users/" class="form">
+                <input type="text" name="username" class="texto" placeholder="Escriba aquí su usuario" required="true"/>
+                <input type="text" name="name" class="texto" placeholder="Escriba aquí su nombre" />
+                <input type="text" name="surname" class="texto" placeholder="Escriba aquí su nombre" />
+                <input type="password" name="password" class="texto" placeholder="Escriba aquí su contraseña" required="true"/>
+                <input type="password" name="confirmPassword" class="texto" placeholder="Confirme su contraseña" required="true"/>
+                <section class="botones">
+                  <label class="botonLogin"><a href="/users/login">Login</a></label>
+                  <input type="submit" value="Registrar" class="Submit" />
+                </section>
+              </form>
+            </article>
+          </section>
+    </body>
+</html>

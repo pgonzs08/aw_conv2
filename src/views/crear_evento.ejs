@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Configuración básica de codificación -->
+    <meta http-equiv="X_UA_Compatible" content="IE=edge" />
+    <!-- Asegura la compatibilidad con Internet Explorer -->
+    <meta name="index" content="width=device-width, initial-scale=1.0" />
+    <!-- Configuración de la vista para dispositivos móviles -->
+    <link rel="stylesheet" href="/public/assets/css/style.css" />
+    <!-- Enlace al archivo CSS personalizado -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.2/css/pico.min.css" />
+    <!-- Enlace a la hoja de estilos de Pico CSS -->
+    <title>Calendario</title>
+    <!-- Título de la página -->
+  </head>
+  <body>
+    <%- include('./nav.ejs', {username: session.username}) %>
+    <div class="container">
+      <!-- Contenedor principal -->
+        <div class="form-container">
+        <form name = "crear-evento" action="/events/create" method="post">
+            <div>
+                <label for="nombre">Nombre del Evento:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <br>
+            <div>
+                <label for="descripcion">Descripción del Evento:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
+            </div>
+            <br>
+            <div>
+              <label for="fecha">Fecha del Evento:</label>
+              <input type="date" id="fecha" name="fecha" required></textarea>
+            </div>
+            <br>
+            <div>
+              <label for="lugar">Lugar del Evento:</label>
+              <input type="text" id="lugar" name="lugar" required>
+            </div>
+            <br>
+            <div>
+                <label for="precio">Precio del Evento (en EU):</label>
+                <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+            </div>
+            <br>
+            <div>
+                <button type="submit">Crear Evento</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    <script src="/assets/js/crear_evento.js"></script>
+    <!-- Enlace al archivo JavaScript -->
+  </body>
+</html>

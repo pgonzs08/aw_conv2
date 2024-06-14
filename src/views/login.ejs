@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X_UA_Compatible" content="IE=edge" />
+    <meta name="index" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/assets/css/login.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.2/css/pico.min.css" />
+    <title>Login</title>
+  </head>
+
+  <body>
+    <section name="container" class="section">
+      <article name="cuerpo" class="article">
+        <form name="login" method="POST" action="/users/login" class="form">
+          <input type="text" name="username" class="texto" placeholder="Escriba aquí su usuario" />
+          <input type="text" name="password" class="texto" placeholder="Escriba aquí su contraseña" />
+          <section class="botones">
+            <label class="botonRegistro"><a href="/users/register">Registrarse</a></label>
+            <input type="submit" value="Entrar" class="Submit" />
+          </section>
+        </form>
+      </article>
+    </section>
+  </body>
+</html>
