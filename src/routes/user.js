@@ -7,7 +7,6 @@ const logger = require("../middlewares/logger");
 router.use(logger);
 
 router.get('/login', userController.getLogin);
-router.post('/login', userController.checkCredentials);
 router.get('/register', userController.getRegister);
 
 router.route("/").all(

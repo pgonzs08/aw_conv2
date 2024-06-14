@@ -2,12 +2,14 @@ const express = require('express');
 const path = require('path');
 const logger = require('./middlewares/logger');
 const session = require('express-session');
-const indexRouter = require('./routes/route_index');
-const eventsRouter = require('./routes/route_event');
-const usersRouter = require('./routes/route_user');
+const indexRouter = require('./routes/index');
+const eventsRouter = require('./routes/event');
+const usersRouter = require('./routes/user');
+const config = require('./config');
+const apiRouter = require('./routes/api');
 
 const app = express();
-const port = 8080;
+const port = config.PORT;
 
 const startWebServer = () => {
 
@@ -27,6 +29,7 @@ const startWebServer = () => {
   app.use('/', indexRouter);
   app.use('/events', eventsRouter);
   app.use('/users', usersRouter);
+  app.use('/api', apiRouter);
 
   app.listen(port, () => {
       console.log(`Servidor escuchando en http://localhost:${port}`);

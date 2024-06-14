@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+const config = require('../config');
 
 //const uri = process.env.WEBAPP_DB_URI;
-const uri = "mongodb+srv://root:99HuDLfG09OLth23@clustereventcity.9tjm5i9.mongodb.net/eventCity?retryWrites=true&w=majority&appName=ClusterEventCity";
+const uri = config.DB;
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 mongoose.connect(uri, clientOptions);
 

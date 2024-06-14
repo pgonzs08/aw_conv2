@@ -17,13 +17,21 @@
     <body>
         <section name="container" class="section">
             <article name="cuerpo" class="article">
-              <form name="register" method="POST" action="/users/" class="form">
-                <input type="text" name="username" class="texto" placeholder="Escriba aquí su usuario" required="true"/>
+              <head><h1>Registro de usuario</h1></head>
+              <form id="register" name="register" method="POST" action="/users/" class="form">
+                <label for="username">Nombre:</label>
+                <input type="text" name="username" class="texto" placeholder="Escriba aquí su nombre de usuario" required="true"/>
                 <input type="text" name="name" class="texto" placeholder="Escriba aquí su nombre" />
-                <input type="text" name="surname" class="texto" placeholder="Escriba aquí su nombre" />
+                <input type="text" name="surname" class="texto" placeholder="Escriba aquí sus apellidos" />
+                <label for="password">Contraseña:</label>
                 <input type="password" name="password" class="texto" placeholder="Escriba aquí su contraseña" required="true"/>
                 <input type="password" name="confirmPassword" class="texto" placeholder="Confirme su contraseña" required="true"/>
-                <section class="botones">
+                <label for="utype">Tipo de usuario: </label>
+                <select name="utype" id="utype" form="register" >
+                  <option value="0" selected>Subscriptor</option>
+                  <option value="1">Publicador</option>
+                </select>
+                <selection class="botones">
                   <label class="botonLogin"><a href="/users/login">Login</a></label>
                   <input type="submit" value="Registrar" class="Submit" />
                 </section>

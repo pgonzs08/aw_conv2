@@ -18,7 +18,7 @@
     <!-- Estilos en línea para las flechas y la disposición del mes -->
   </head>
   <body>
-    <%- include('./nav.ejs', {username: session.username}) %>
+    <%- include('./nav.ejs', {username: session.username, usertype: session.usertype}) %>
     <div class="container">
       <!-- Contenedor principal -->
       <div class="left">
