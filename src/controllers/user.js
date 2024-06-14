@@ -28,9 +28,9 @@ exports.getUserProfilePage = async (req, res) => {
 exports.getUserData = async (req, res) =>{
     const uname = req.params.id;
     var item;
-    await models.User.findOne({username: uname}).exec().then((u) =>item.user=u);
-    await models.Subscriber.findOne({user: {username: uname}}).exec().then((s) =>item.subscriptor=s);
-    await models.Publisher.findOne({user: {username: uname}}).exec().then((p) =>item.publisher=p);
+    await models.User.findOne({username: uname}, {username}).exec().then((u) =>item.user=u);
+    await models.Subscriber.findOne({user: {username: uname}}, {user}).exec().then((s) =>item.subscriptor=s);
+    await models.Publisher.findOne({user: {username: uname}}, {user}).exec().then((p) =>item.publisher=p);
 
     res.send(item);
 }
