@@ -6,20 +6,31 @@
     <body>
         <%- include('./nav.ejs', {username: session.username, usertype: session.usertype}) %>
         <% if (usuario) {%>
-        <h1><%=usuario.username%></h1>
-        <h2><%=usuario.name%> <%=usuario.surname%></h2>
-        <% if (isSubscriptor) { %>
-            <p><%subscriptor.user%> es un usuario subscriptor</p>
-            <ul>
-                <% subscriptor.events.forEach((evento) => {%><li><a href="/events/<%-evento.id%>""><%=evento.name%></a></li><%})%>
-            </ul>
-        <% } %>
-        <% if (isPublicador) { %>
-            <p><%=publicador.user.username%> es un usuario publicador</p>
-            <ul>
-                <% publicador.events.forEach((evento) => {%><li><a href="/events/<%-evento.id%>""><%=evento.name%></a></li><%})%>
-            </ul>
-        <% } %>
+        <header>
+            <h1><%=usuario.user.username%></h1>
+            <h2><%=usuario.user.name%> <%=usuario.user.surname%></h2>
+        </header>
+        <main>
+            <% if (session.utype == 0) { %>
+                <p><%usuario.user.username%> es un usuario subscriptor</p>
+                <ul>
+                    <% usuario.subscriptor.events.forEach((evento) => {%>
+                        <li><article>
+                            <header>
+                                <h3><%=evento.name%></h3>
+                            </header>
+                            <footer><a class="button" href="/events/<%-evento.id%>"> Ir </a></footer>
+                        </article></li>
+                    <%})%>
+                </ul>
+            <% } %>
+            <% if (session.utype == 1) { %>
+                <p><%=usuario.publicador.user.username%> es un usuario publicador</p>
+                <ul>
+                    <% usuario.publicador.events.forEach((evento) => {%><li><a href="/events/<%-evento.id%>""><%=evento.name%></a></li><%})%>
+                </ul>
+            <% } %>
+        </main>
         <% } %>
     </body>
 </html>

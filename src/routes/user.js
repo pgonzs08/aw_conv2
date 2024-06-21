@@ -8,6 +8,7 @@ router.use(logger);
 
 router.get('/login', userController.getLogin);
 router.get('/register', userController.getRegister);
+router.get('/logout', userController.logout);
 
 router.route("/").all(
     (req, res, next) => {

@@ -21,4 +21,5 @@ router.route('/users').all( (req, res, next) => {
 
 router.get('/users/:username', userController.getUserData);
 
+
 module.exports = router;

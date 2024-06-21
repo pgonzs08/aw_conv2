@@ -1,5 +1,15 @@
 const path = require('path');
 const models = require("../models/modelos");
+const config = require("../config");
+
+const BASE_URL = "http://"+config.HOST+":"+config.PORT;
+
+//Cerrar sesión
+exports.logout = (req, res) =>{
+    req.session.username = undefined;
+    req.session.utype = undefined;
+    res.redirect("/");
+}
 
 //Devolver vistas
 exports.getLogin = (req, res) =>{
@@ -16,21 +26,29 @@ exports.getUserProfilePage = async (req, res) => {
     var item = {};
     uname = req.params.username;
     item.session = req.session;
-    try{
-        item = fetch('/api/users/'+uname);
+    if (item.session.username == uname){
+        try{
+            req.URL
+            await (await fetch(BASE_URL+'/api/users/'+uname)).json().then((body) => item.usuario = body);
+            console.log(item.usuario);
+        }
+        catch (MongooseError){
+            res.redirect('/');
+        }
+        res.render(path.join(__dirname, '../views/perfil_usuario.ejs'), item);
     }
-    catch (MongooseError){
+    else {
+        console.log("Users cant view profiles from other users");
         res.redirect('/');
     }
-    res.render(path.join(__dirname, '../views/perfil_usuario.ejs'), item);
 };
 
 exports.getUserData = async (req, res) =>{
     const uname = req.params.username;
     var item = {};
-    await models.User.findOne({username: uname}, {username: 1}).exec().then((u) =>item.user=u);
-    await models.Subscriber.findOne({user: {username: uname}}, {user: 1}).exec().then((s) =>item.subscriptor=s);
-    await models.Publisher.findOne({user: {username: uname}}, {user: 1}).exec().then((p) =>item.publisher=p);
+    await models.User.findOne({username: uname}, {username: 1, name: 1, surname: 1}).exec().then((u) =>item.user=u);
+    await models.Subscriber.findOne({user: {username: uname}}, {user: 1, events: 1}).exec().then((s) =>item.subscriptor=s);
+    await models.Publisher.findOne({user: {username: uname}}, {user: 1, events: 1}).exec().then((p) =>item.publisher=p);
 
     res.send(item);
 }
@@ -52,8 +70,8 @@ exports.checkCredentials = async (req, res) =>{
     if(!user) res.redirect('/users/login');
     else if (password == user.password) {
         req.session.username = user.username;
-
-        res.redirect('/users/profile');
+        req.session.utype = utype;
+        res.redirect('/users/'+username);
     } else {
         res.redirect('/users/login');
     }
@@ -102,5 +120,9 @@ exports.createUser = async (req, res) =>{
 
 // Actualizar perfil y borrar usuario (sin usar)
 exports.updateUserProfilePage = (req, res) =>{
+    console.log(req.body);
+}
+
+exports.deleteUserProfilePage = (req, res) =>{
     console.log(req.body);
 }
